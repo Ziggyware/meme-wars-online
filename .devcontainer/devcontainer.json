@@ -1,12 +1,23 @@
 {
   "name": "LLM Game Server",
   "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11"
+    }
+  },
+  "mounts": [
+    "source=pip-cache,target=/root/.cache/pip,type=volume",
+    "source=model-cache,target=/root/.cache/huggingface,type=volume"
+  ],
   "postCreateCommand": "pip install -r requirements.txt",
   "customizations": {
     "vscode": {
-      "settings": {
-        "python.defaultInterpreterPath": "/usr/local/bin/python"
-      }
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance"
+      ]
     }
-  }
+  },
+  "updateContentCommand": "pip install -r requirements.txt"
 }
