@@ -3,9 +3,9 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 
 app = Flask(__name__)
-
-tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-Instruct-v0.1")
-model = AutoModelForCausalLM.from_pretrained("mistralai/Mistral-7B-Instruct-v0.1")
+model_name = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForCausalLM.from_pretrained(model_name)
 
 @app.route("/chat", methods=["POST"])
 def chat():
